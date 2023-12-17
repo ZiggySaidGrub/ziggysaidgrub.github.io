@@ -1,0 +1,98 @@
+<html>
+	<head>
+		<title>Shrine of Ziggy | Ziggy.boo</title>
+		<link rel="icon" href="../../images/piggies.jpg" type="image/jpg"/>
+		<style>
+			body {
+				
+			}
+			h1, h2, p {
+				color:white;
+				font-family:monospace;
+			}
+			#textDiv {
+				background-color:rgb(29, 224, 169);
+				width:300px;
+				border:6px dashed rgb(15, 128, 75);
+				margin-bottom:3px;
+				z-index:10;
+				
+			}
+			#pigDraw {
+				position:absolute;
+				width:100
+				
+			}
+
+
+		</style>
+	</head>
+	<body>
+		<center><div id="textDiv"><h1 class="text">Shrine of Ziggy</h1>
+		<h2 id="zigTimer" class="text">0</h2><h2 id="rank">Your Rank Is:Beginner Pig</h2></div>
+		<img src="../../images/piggies.jpg" id="pig"></center>
+		<img src="../../images/piggies.jpg" width="20px">
+		<a href="../index.html"><p>© bobo software-2023</p></a>
+		<script>
+			var r = 0;
+			var g = 0;
+			var b = 0;
+			var rgbCycle = 0;
+			var timer = 0;
+			var timeEl = document.getElementById("zigTimer");
+			var onPigClick = function(e) {
+				if (r > 180) {
+					r = 0;
+					rgbCycle = 1;
+				} else if(rgbCycle === 0) {
+					r += 10;
+				}
+				if (g > 180) {
+					g = 0;
+					rgbCycle = 2;
+				} else if(rgbCycle === 1) {
+					g += 10;
+				}
+				if (b > 180) {
+					b = 0;
+					rgbCycle = 0;
+				} else if(rgbCycle === 2) {
+					b += 10;
+				}
+				document.body.style.backgroundColor = "rgb("+r+", "+g+", "+b+")";
+				
+			}
+			setInterval(onPigClick, 40);
+			var rankNames = ["Pig", "Piggy", "Zig", "Ziggymobiel", "Zig the Pig"];
+			var rankNums = [10, 50, 100, 500, 1000];
+			var rankEl = document.getElementById("rank")
+			var timeLoop = function() {
+					timer++;
+					timeEl.textContent = timer;
+					var rank = "Beginner Pig";
+					for (var i = 0; i < rankNums.length; i++) {
+						if (timer >= rankNums[i]) {
+							rank = rankNames[i];
+						}
+					}
+					rankEl.textContent = "Your Rank Is:"+rank;
+				}
+			setInterval(timeLoop, 1000);
+			//var pigMouseEl = document.getElementById("pigMouse");
+			var onDrawMove = function(e) {
+				// create the <img>
+				let pigMouseEl = document.createElement("img");
+				// set the src of the <img>
+				pigMouseEl.src = "../../images/piggies.jpg";
+				pigMouseEl.id = "pigDraw";
+				// append the <img> to the body
+				document.body.appendChild(pigMouseEl);
+				// position the <img>
+				console.log(e);
+				pigMouseEl.style.left = e.screenX-90;
+				pigMouseEl.style.top = e.screenY-100;
+			}
+			document.body.addEventListener("mousemove", onDrawMove);
+		</script>
+	</body>
+</html>

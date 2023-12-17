@@ -1,0 +1,62 @@
+<html>
+	<head>
+		<title>BOS Paint | Ziggy.boo</title>
+		<link rel="icon" type="image/x-icon" href="../../images/favicon.ico"></link>
+		<style>
+			#inputDiv {
+				background-color:rgb(48, 160, 194);
+				width:200px;
+			}
+			p, button, input {
+				color:white;
+				font-family:monospace;
+				padding-left:5px;
+			}
+			button, input {
+				background-color:rgb(115, 121, 122);
+				padding-left:5px;
+			}
+			hr {
+				border:2px solid rgb(27,100,122);
+			}
+		</style>
+	</head>
+	<body>
+		<div id="inputDiv"><p>R<input type="text" id="rv" value="255"><br>
+		G<input type="text" id="gv" value="0"><br>B<input type="text" id="bv" value="0"></p><hr>
+		<p>thic<input type="text" id="tv" value="5"></p><hr>
+		<button id="clearButton" onClick="onClearClick()">Clear</button><hr>
+		<p><a href="../index.html">© bobo software-2023</a></p></div>
+		
+		<script>
+			// Draw Function
+			var drawMove = function(e) {
+				if (e.clientX > 210) {
+					let rValue = document.getElementById("rv").value;
+					let gValue = document.getElementById("gv").value;
+					let bValue = document.getElementById("bv").value;
+					let tValue = document.getElementById("tv").value;
+					let drawEl = document.createElement("div");
+					drawEl.classList.add("pixel");
+					drawEl.style.backgroundColor = "rgb("+rValue+", "+gValue+", "+bValue+")";
+					drawEl.style.width = tValue+"px";
+					drawEl.style.height = tValue+"px";
+					drawEl.style.position = "absolute"
+					document.body.appendChild(drawEl);
+					console.log(e.clientX);
+					drawEl.style.left = e.clientX-tValue/2;
+					drawEl.style.top = e.clientY-tValue/2;
+				}
+			}
+			document.body.addEventListener("mousemove", drawMove);
+			var clearEl = document.getElementById("clearButton");
+			var onClearClick = function() {
+				let drawEls = document.querySelectorAll(".pixel");
+				for (let i = 0; i < drawEls.length; i++) {
+					drawEls[i].remove();
+				}
+				console.log("this works");
+			}
+		</script>
+	</body>
+</html>
