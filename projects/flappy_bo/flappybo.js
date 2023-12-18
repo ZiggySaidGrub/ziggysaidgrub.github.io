@@ -28,3 +28,8 @@ document.body.onkeydown = function(e) {
 	}
   }
 }
+document.body.addEventListener("click", function() {
+	if(speedY > maxUp) {
+		speedY -= 30;
+	}
+});
