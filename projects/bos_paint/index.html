@@ -19,17 +19,24 @@
 			hr {
 				border:2px solid rgb(27,100,122);
 			}
+			#drawIn {
+				border:0px solid white;
+				background-color:rgb(0,255,0);
+				width:5px;
+				height:5px;
+			}
 		</style>
 	</head>
 	<body>
 		<div id="inputDiv"><p>R<input type="text" id="rv" value="255"><br>
 		G<input type="text" id="gv" value="0"><br>B<input type="text" id="bv" value="0"></p><hr>
 		<p>thic<input type="text" id="tv" value="5"></p><hr>
-		<button id="clearButton" onClick="onClearClick()">Clear</button><hr>
+		<button id="clearButton" onClick="onClearClick()">Clear</button><div id="drawIn"></div><hr>
 		<p><a href="../index.html">© bobo software-2023</a></p></div>
 		
 		<script>
 			var penDown = true;
+			var indicator = document.getElementById("drawIn");
 			// Draw Function
 			var drawMove = function(e) {
 				if (e.clientX > 210 && penDown) {
@@ -63,9 +70,11 @@
     					// Spacebar was pressed
     					if(penDown){
 						penDown = false;
+						indicator.style.backgroundColor = "red";
 					}
 					else{
 						penDown = true;
+						indicator.style.backgroundColor = "green";
 					}
   				}
 			});
