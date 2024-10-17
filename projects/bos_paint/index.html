@@ -12,7 +12,7 @@
 				font-family:monospace;
 				padding-left:5px;
 			}
-			button, input {
+			button, input, #drawIn {
 				background-color:rgb(115, 121, 122);
 				padding-left:5px;
 			}
@@ -31,7 +31,8 @@
 		<div id="inputDiv"><p>R<input type="text" id="rv" value="255"><br>
 		G<input type="text" id="gv" value="0"><br>B<input type="text" id="bv" value="0"></p><hr>
 		<p>thic<input type="text" id="tv" value="5"></p><hr>
-		<button id="clearButton" onClick="onClearClick()">Clear</button><div id="drawIn"></div><hr>
+		<button id="clearButton" onClick="onClearClick()">Clear</button><hr>
+		<div id="drawIn"></div><p>Press space to start and stop drawing<br>(when red you are not drawing when green you are)</p><hr>
 		<p><a href="../index.html">© bobo software-2023</a></p></div>
 		
 		<script>
