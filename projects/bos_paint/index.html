@@ -29,9 +29,10 @@
 		<p><a href="../index.html">© bobo software-2023</a></p></div>
 		
 		<script>
+			var penDown = true;
 			// Draw Function
 			var drawMove = function(e) {
-				if (e.clientX > 210) {
+				if (e.clientX > 210 && penDown) {
 					let rValue = document.getElementById("rv").value;
 					let gValue = document.getElementById("gv").value;
 					let bValue = document.getElementById("bv").value;
@@ -57,6 +58,17 @@
 				}
 				console.log("this works");
 			}
+			document.addEventListener('keydown', function(event) {
+  				if (event.key === ' ' || event.code === 'Space') {
+    					// Spacebar was pressed
+    					if(penDown){
+						penDown = false;
+					}
+					else{
+						penDown = true;
+					}
+  				}
+			});
 		</script>
 	</body>
 </html>
